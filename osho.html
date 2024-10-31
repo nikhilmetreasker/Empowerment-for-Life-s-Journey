@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osho Quotes</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional: If you have a separate CSS file -->
+    <script src="osho.js" defer></script> <!-- Include your JavaScript file -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+            background-color: black;
+            font-family: Arial, sans-serif;
+        }
+        li {
+            list-style-type: none;
+        }
+        header {
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            background-color: black;
+        }
+        ul {
+            display: flex;
+            gap: 40px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        ul li:hover {
+            background-color: darkorange;
+        }
+        ul:first-of-type {
+            justify-content: flex-start;
+        }
+        ul:last-of-type {
+            justify-content: flex-end;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: orange;
+            text-align: center;
+            flex-grow: 1;
+            padding: 20px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 500%;
+            color: orange;
+            background-color: black;
+            margin: 0;
+            padding: 20px;
+            width: 100%;
+        }
+        .button-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+        }
+        .button-container button {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            background-color: black;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .button-container button:hover {
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li style="color: white; font-size: 40px; margin: 18px;">OSHO</li>
+        </ul>
+
+        <ul style="font-size: 25px; padding-right: 20px;">
+         
+   
+            <li style="color: white;">
+
+                <a href="./index.html" style="color: white; text-decoration: none;">KRSNA</a>
+                </li>
+    
+
+
+            <li style="color: white;">
+                <a href="./broken.html" style="color: white; text-decoration: none;">BROKEN</a>
+            </li>
+
+
+        
+     
+            <li style="color: white;">
+                <a href="./wpt.html" style="color: white; text-decoration: none;">WHAT PEOPLE THINK?</a>
+</li>
+        
+        </ul>
+    </nav>
+</header>
+
+<div class="content">
+    <h1 id="t1" onclick="displayQuote()">" "</h1>
+</div>
+
+<div class="button-container">
+    <button id="p1" onclick="previousQuote()">Previous</button>
+    <button id="n1" onclick="nextQuote()">Next</button>
+</div>
+
+<script src="osho.js" defer></script> <!-- Include your JavaScript file here -->
+</body>
+</html>
