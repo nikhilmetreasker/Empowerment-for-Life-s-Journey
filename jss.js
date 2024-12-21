@@ -606,15 +606,17 @@ const quotes = [
     "Life is either a daring adventure or nothing at all. (Bhagavad Gita 4.)"
 
    
-];function getRandomIndex(lastIndex, length) {
+];
+
+function getRandomIndex(lastIndex, length) {
     let newIndex;
     do {
         newIndex = Math.floor(Math.random() * length);
-    } while (newIndex === lastIndex); // Ensure the new index is different
+    } while (newIndex === lastIndex); // Ensure the new index is not the same
     return newIndex;
 }
 
-let currentIndex = parseInt(localStorage.getItem("currentIndex"), 10) || 0; // Retrieve last index or default to 0
+let currentIndex = parseInt(localStorage.getItem("currentIndex"), 10) || 0; // Retrieve or default to 0
 
 function displayQuote() {
     const quoteElement = document.getElementById("t1");
@@ -627,7 +629,7 @@ function previousQuote() {
     if (currentIndex > 0) {
         currentIndex--;
     } else {
-        currentIndex = quotes.length - 1; // Loop back to the last quote
+        currentIndex = quotes.length - 1; // Loop to the last quote
     }
     saveCurrentIndex();
     displayQuote();
@@ -637,14 +639,14 @@ function nextQuote() {
     if (currentIndex < quotes.length - 1) {
         currentIndex++;
     } else {
-        currentIndex = 0; // Loop back to the first quote
+        currentIndex = 0; // Loop to the first quote
     }
     saveCurrentIndex();
     displayQuote();
 }
 
 function saveCurrentIndex() {
-    localStorage.setItem("currentIndex", currentIndex); // Save the current index to localStorage
+    localStorage.setItem("currentIndex", currentIndex.toString()); // Save the current index
 }
 
 function showToaster() {
@@ -657,11 +659,12 @@ function showToaster() {
     }
 }
 
-// Combined window.onload to handle both the random quote display and the toaster
 window.onload = () => {
-    const lastIndex = currentIndex; // Get the last index from localStorage
-    currentIndex = getRandomIndex(lastIndex, quotes.length); // Get a new random index
+    const lastIndex = currentIndex;
+    currentIndex = getRandomIndex(lastIndex, quotes.length); // Generate a new index
     saveCurrentIndex(); // Save the new index
-    displayQuote(); // Display the quote
+    displayQuote(); // Display the random quote
     showToaster(); // Show the toaster notification
 };
+
+console.log("working");
