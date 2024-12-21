@@ -606,37 +606,45 @@ const quotes = [
     "Life is either a daring adventure or nothing at all. (Bhagavad Gita 4.)"
 
    
-];function getRandomIndex() {
-    return Math.floor(Math.random() * quotes.length);
+];function getRandomIndex(lastIndex, length) {
+    let newIndex;
+    do {
+        newIndex = Math.floor(Math.random() * length);
+    } while (newIndex === lastIndex); // Ensure the new index is different
+    return newIndex;
 }
 
-let currentIndex = Math.random() * quotes.length;
+let currentIndex = parseInt(localStorage.getItem("currentIndex"), 10) || 0; // Retrieve last index or default to 0
 
 function displayQuote() {
-    const quoteElement = document.getElementById('t1');
+    const quoteElement = document.getElementById("t1");
     if (quoteElement) {
         quoteElement.innerHTML = `"${quotes[currentIndex]}"`;
     }
 }
 
-// Function to display the previous quote
 function previousQuote() {
     if (currentIndex > 0) {
         currentIndex--;
     } else {
         currentIndex = quotes.length - 1; // Loop back to the last quote
     }
+    saveCurrentIndex();
     displayQuote();
 }
 
-// Function to display the next quote
 function nextQuote() {
     if (currentIndex < quotes.length - 1) {
         currentIndex++;
     } else {
         currentIndex = 0; // Loop back to the first quote
     }
+    saveCurrentIndex();
     displayQuote();
+}
+
+function saveCurrentIndex() {
+    localStorage.setItem("currentIndex", currentIndex); // Save the current index to localStorage
 }
 
 function showToaster() {
@@ -651,7 +659,9 @@ function showToaster() {
 
 // Combined window.onload to handle both the random quote display and the toaster
 window.onload = () => {
-    currentIndex = getRandomIndex(); // Get a random quote index
+    const lastIndex = currentIndex; // Get the last index from localStorage
+    currentIndex = getRandomIndex(lastIndex, quotes.length); // Get a new random index
+    saveCurrentIndex(); // Save the new index
     displayQuote(); // Display the quote
-    showToaster();  // Show the toaster notification
+    showToaster(); // Show the toaster notification
 };
