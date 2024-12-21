@@ -610,7 +610,7 @@ const quotes = [
     return Math.floor(Math.random() * quotes.length);
 }
 
-let currentIndex = 0;
+let currentIndex = Math.random() * quotes.length;
 
 function displayQuote() {
     const quoteElement = document.getElementById('t1');
